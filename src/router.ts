@@ -8,7 +8,7 @@ function routes(props: any): any {
   return [
     {
       path: "/",
-      exact: true,
+      // exact: true,
       component: Containers.ListContainer,
     }
   ];

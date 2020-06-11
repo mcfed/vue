@@ -1,4 +1,4 @@
-import Vue from "vue";
+import Vue, { CreateElement } from "vue";
 import VueRouter from 'vue-router'
 //@ts-ignore
 import { reduxStorePlugin } from 'redux-vue'
@@ -12,12 +12,12 @@ import {StoreManager} from '@mcf/core'
 import  * as HelloModule from './index'
 import view from './views/app'
 
-import App from './app'
+import App from './app.vue'
 
 
 const storeManager = new StoreManager(createHashHistory(),[],[])
 // console.dir(Hello,Hello.default)
-console.log(JSON.stringify(process.env))
+// console.log(JSON.stringify(process.env))
 // install redux-vue
 Vue.use(reduxStorePlugin)
 Vue.use(VueRouter)
@@ -40,14 +40,11 @@ Vue.use(VueRouter)
 //     }
 //   });
 const routes: any[] = [...HelloModule.router({path:"hello"})];
+// console.log(routes);
+
 console.log(routes);
 const router = new VueRouter({
-  routes: [
-    {
-      path: "/aaa",
-      component: view
-    }
-  ],
+  routes: routes,
   // mode: "history",
 });
 storeManager.loadRouterModule(HelloModule);

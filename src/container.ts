@@ -9,17 +9,21 @@ import { namespace } from "./model";
 import { Dispatch } from "redux";
 
 const { defaultMergeProps } = Container;
-const { reducerItemSelector, reducerListSelector, fetchingSelector,reducerSelector,appSelector } = Selector;
+const {
+  reducerItemSelector,
+  reducerListSelector,
+  fetchingSelector,
+  reducerSelector,
+  appSelector,
+} = Selector;
 
 export const mapStateToProps = (state: any, props: any) => {
   return {
-    // intl: props.intl,
-    // messages: defineMessages(messages),
     appReducer: appSelector(state),
     fetchingReducer: fetchingSelector(state),
     reducer: reducerSelector(state, namespace),
     items: reducerListSelector(state, namespace),
-    item: reducerItemSelector(state, namespace, props.match.params.id),
+    item: reducerItemSelector(state, namespace, "1"),
   };
 };
 export const dispatchToProps = (dispatch: Dispatch, props: object) => {
@@ -29,8 +33,7 @@ export const dispatchToProps = (dispatch: Dispatch, props: object) => {
   };
 };
 export const ListContainer = connect(
-         mapStateToProps,
-         dispatchToProps,
-         defaultMergeProps
-       )(ListView);
-
+  mapStateToProps,
+  dispatchToProps,
+  defaultMergeProps
+)(ListView);
